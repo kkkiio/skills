@@ -42,7 +42,7 @@ AGENTS.md is for **developer agents** — agents that modify the project. Follow
 
 ### Mandatory Three-Layer Structure
 
-Every `AGENTS.md` must have exactly these three top-level sections, in this order:
+Every `AGENTS.md` must use `# AGENTS.md` as the single H1 title, followed by exactly these three H2 sections in this order:
 
 | Section | Purpose | Must Answer |
 |---------|---------|-------------|
@@ -50,7 +50,7 @@ Every `AGENTS.md` must have exactly these three top-level sections, in this orde
 | **Project Structure Guide** | Directory layout, key files, architecture guidelines | "Where is everything and how is it organized?" |
 | **Operation Guide** | Dev environment, workflows, test commands, tooling | "How do I run, test, and build this project?" |
 
-If a section has no content yet, keep the heading and add a placeholder — never omit a section.
+If a section has no content yet, keep the H2 heading and add a placeholder — never omit a section. Any subsections inside these three required sections must start at H3.
 
 ### Key Style Principles
 
