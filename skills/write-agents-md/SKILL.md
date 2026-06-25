@@ -1,0 +1,93 @@
+---
+name: write-agents-md
+description: Write or update AGENTS.md for a project. AGENTS.md is for developer agents — where things are and how to build/test/modify. Use when creating AGENTS.md from scratch, adding new rules or skills, restructuring the repo, or when asked to "maintain the AGENTS guide".
+---
+
+# Write AGENTS.md
+
+Use this skill when creating or updating `AGENTS.md`.
+
+## Mandatory Three-Layer Structure
+
+Every `AGENTS.md` must use `# AGENTS.md` as the single H1 title, followed by exactly these three H2 sections in this order:
+
+| Section | Purpose | Must Answer |
+|---------|---------|-------------|
+| **Policies & Mandatory Rules** | Hard rules and skill triggers that constrain agent behavior | "What must the agent always / never do?" |
+| **Project Structure Guide** | Directory layout, key files, architecture guidelines | "Where is everything and how is it organized?" |
+| **Operation Guide** | Dev environment, workflows, test commands, tooling | "How do I run, test, and build this project?" |
+
+If a section has no content yet, keep the H2 heading and add a placeholder — never omit a section. Any subsections inside these three required sections must start at H3.
+
+## Key Style Principles
+
+### 1. Trigger-Based Rules
+
+Every rule states exactly **when** it applies and **when** it does not:
+
+```
+Run `$skill-name` when you change:
+- src/foo/ (runtime code)
+- tests/ (test code)
+
+Skip for docs-only changes, unless [condition].
+```
+
+Never write a rule without a trigger condition. "Always do X" is acceptable only when it truly has no exceptions.
+
+### 2. Skill-Centric
+
+Encapsulate repeatable workflows as named skills with a `$` prefix: `$run-tests`, `$validate-schema`. Define each skill's trigger and skip conditions in the Policies section.
+
+### 3. Copy-Paste-able Commands
+
+Every shell command must be complete and runnable:
+
+```bash
+make tests
+```
+
+Not: "run the tests". Never use ellipsis in command blocks. Use `<placeholder>` for user-specific values.
+
+### 4. Imperative Mood
+
+All rules use imperative: "Run X", "Use Y", "Do not Z". No "You should", "We recommend".
+
+### 5. Specific File Paths
+
+Reference actual paths: `src/agents/run.py`, not "the runner module".
+
+## README vs AGENTS Boundary
+
+| Audience | README.md | AGENTS.md |
+|----------|-----------|-----------|
+| What the project is and does | ✅ | — |
+| Installation and usage | ✅ | — |
+| Feature list, roadmap | ✅ | — |
+| Directory structure, key files | — | ✅ |
+| Build / test / format commands | — | ✅ |
+| Architecture guidelines | — | ✅ |
+| Mandatory rules and skill triggers | — | ✅ |
+
+If content serves **developer agents modifying the project**, put it in AGENTS.md. Never duplicate between README and AGENTS.
+
+## When to Update
+
+Update AGENTS.md when:
+- New mandatory rules are established
+- New skills are added with trigger conditions
+- Directory restructuring occurs
+- Build/test commands change
+- Architecture guidelines change
+
+## Update Workflow
+
+1. Read the existing `AGENTS.md` first.
+2. Identify which layer the content belongs to (Policies, Structure, Operation).
+3. Add content under the correct section.
+4. Update the Table of Contents if headings changed.
+5. Keep each section ordered by importance — most critical first.
+
+## Templates
+
+- `references/agents-md-template.md` — AGENTS.md skeleton.
