@@ -15,9 +15,18 @@ Only three things are required:
 
 The first paragraph after the top-level heading must explain **what the project is and what it does**.
 
+**Screenshot or logo.** Before the opening paragraph, include a visual that represents the project:
+- **Has a UI (web, GUI, TUI)?** Put a running screenshot at the top. Avoid revealing private information in screenshots — strip local global paths (`HOME`), usernames, API keys, etc.
+- **No UI?** Generate a logo image using an image-generation model, based on the project's purpose and name, and embed it in the README.
+
 ### 2. H2 — Installation
 
 How to install and set up the project.
+
+**Unpublished projects.** If the project hasn't been published to a remote registry or release channel (npm, GitHub Releases, PyPI, etc.):
+- You may write `TODO` as a placeholder for the install section.
+- Alternatively, provide source-install commands that clone and set up locally (e.g. `git clone ... && pip install -e .`).
+- Do **not** write development commands such as `npm run dev`, `just run`, `cargo run`, or similar. These are for AGENTS.md, not README.md.
 
 ### 3. H2 — Usage
 
