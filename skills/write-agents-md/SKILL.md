@@ -57,6 +57,36 @@ All rules use imperative: "Run X", "Use Y", "Do not Z". No "You should", "We rec
 
 Reference actual paths: `src/agents/run.py`, not "the runner module".
 
+### 6. Repo Structure Tree
+
+For `Project Structure Guide` → `Repo Structure & Important Files`, use a plain `text` code block with a box-drawing tree:
+
+```text
+.
+├── src/                    # Runtime source
+│   ├── core/               # Core domain logic
+│   └── server/             # Server entrypoints
+├── tests/                  # Automated tests
+├── docs/                   # Product and architecture docs
+└── package.json            # Scripts and dependencies
+```
+
+### 7. Compatibility Policy
+
+When project stability expectations affect implementation choices, add a `Compatibility Policy` subsection under `Policies & Mandatory Rules`.
+
+For self-use, early-stage, or 0.x projects, use a concise policy like:
+
+```text
+### Compatibility Policy
+
+When changing public APIs, persisted data, config files, CLI flags, plugin contracts, or user-facing workflows, follow this project's compatibility policy.
+
+- Project at 0.x: zero stability guarantees.
+- Prefer direct migrations and simple current-state code over compatibility layers.
+- Document intentional breaking changes in the final response; update `CHANGELOG.md` when it exists or when the project already uses release notes.
+```
+
 ## README vs AGENTS Boundary
 
 | Audience | README.md | AGENTS.md |

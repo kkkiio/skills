@@ -1,7 +1,7 @@
 # AGENTS.md Template
 
-```markdown
-# [Project Name] Agent Guide
+````markdown
+# AGENTS.md
 
 Brief one-liner describing what this project is and what this guide covers.
 
@@ -31,6 +31,14 @@ You can skip `$skill-name` for [list exceptions], unless [explicit condition].
 
 [Description and trigger conditions.]
 
+### Compatibility Policy
+
+When changing public APIs, persisted data, config files, CLI flags, plugin contracts, or user-facing workflows, follow this project's compatibility policy.
+
+- Project at 0.x: zero stability guarantees.
+- Prefer direct migrations and simple current-state code over compatibility layers.
+- Document intentional breaking changes in the final response; update `CHANGELOG.md` when it exists or when the project already uses release notes.
+
 ### [Domain-Specific Rule]
 
 [Rule statement. Use imperative mood.]
@@ -47,10 +55,15 @@ You can skip `$skill-name` for [list exceptions], unless [explicit condition].
 
 ### Repo Structure & Important Files
 
-- `src/`: [Description]
-- `tests/`: [Description]
-- `docs/`: [Description]
-- [Other key directories and files]
+```text
+.
+├── src/                    # [Runtime source]
+│   ├── core/               # [Core domain logic]
+│   └── server/             # [Server entrypoints]
+├── tests/                  # [Automated tests]
+├── docs/                   # [Product and architecture docs]
+└── package.json            # [Scripts and dependencies]
+```
 
 ### [Domain-Specific Architecture Guidelines]
 
@@ -94,4 +107,4 @@ You can skip `$skill-name` for [list exceptions], unless [explicit condition].
   ```bash
   [command]
   ```
-```
+````
