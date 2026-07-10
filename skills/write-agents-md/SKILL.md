@@ -7,17 +7,30 @@ description: Write or update AGENTS.md for a project. AGENTS.md is for developer
 
 Use this skill when creating or updating `AGENTS.md`.
 
-## Mandatory Three-Layer Structure
+## Mandatory Structure
 
-Every `AGENTS.md` must use `# AGENTS.md` as the single H1 title, followed by exactly these three H2 sections in this order:
+Every `AGENTS.md` must use `# AGENTS.md` as the single H1 title, followed by these H2 sections in this order:
 
 | Section | Purpose | Must Answer |
 |---------|---------|-------------|
+| **Domain Language** | Project-specific terminology agents cannot infer from code | "What do these words mean in this project?" |
 | **Policies & Mandatory Rules** | Hard rules and skill triggers that constrain agent behavior | "What must the agent always / never do?" |
 | **Project Structure Guide** | Directory layout, key files, architecture guidelines | "Where is everything and how is it organized?" |
 | **Operation Guide** | Dev environment, workflows, test commands, tooling | "How do I run, test, and build this project?" |
 
-If a section has no content yet, keep the H2 heading and add a placeholder — never omit a section. Any subsections inside these three required sections must start at H3.
+If a section has no content yet, keep the H2 heading and add a placeholder — never omit a section. Any subsections must start at H3.
+
+### Domain Language
+
+Every project has terms whose meanings differ from common usage — an agent misunderstanding them causes wrong implementation. Always include this section.
+
+Every entry follows this format:
+
+```markdown
+- **Term** — One-sentence definition of what it IS (not what it does).
+```
+
+Add `_Avoid_: synonym, another-synonym` only when an agent might substitute a confusing synonym. Do not include relationships between terms, historical ambiguities, implementation details, or maintenance rules. Keep the total under 20 lines — each line costs tokens in every session.
 
 ## Key Style Principles
 
@@ -94,6 +107,7 @@ When changing public APIs, persisted data, config files, CLI flags, plugin contr
 | What the project is and does | ✅ | — |
 | Installation and usage | ✅ | — |
 | Feature list, roadmap | ✅ | — |
+| Domain terminology (project-specific) | — | ✅ |
 | Directory structure, key files | — | ✅ |
 | Build / test / format commands | — | ✅ |
 | Architecture guidelines | — | ✅ |
@@ -106,6 +120,7 @@ If content serves **developer agents modifying the project**, put it in AGENTS.m
 Update AGENTS.md when:
 - New mandatory rules are established
 - New skills are added with trigger conditions
+- New domain terms are defined or existing ones change meaning
 - Directory restructuring occurs
 - Build/test commands change
 - Architecture guidelines change
@@ -113,7 +128,7 @@ Update AGENTS.md when:
 ## Update Workflow
 
 1. Read the existing `AGENTS.md` first.
-2. Identify which layer the content belongs to (Policies, Structure, Operation).
+2. Identify which section the content belongs to (Domain Language, Policies, Structure, Operation).
 3. Add content under the correct section.
 4. Update the Table of Contents if headings changed.
 5. Keep each section ordered by importance — most critical first.

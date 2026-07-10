@@ -9,13 +9,27 @@ Brief one-liner describing what this project is and what this guide covers.
 
 ## Table of Contents
 
-1. [Policies & Mandatory Rules](#policies--mandatory-rules)
-2. [Project Structure Guide](#project-structure-guide)
-3. [Operation Guide](#operation-guide)
+1. [Domain Language](#domain-language)
+2. [Policies & Mandatory Rules](#policies--mandatory-rules)
+3. [Project Structure Guide](#project-structure-guide)
+4. [Operation Guide](#operation-guide)
+
+## Domain Language
+
+Each entry is one sentence defining what the term IS, not what it does:
+
+```markdown
+- **Term** — One-sentence definition of what it IS.
+  _Avoid_: synonym (only when a real synonym problem exists)
+```
+
+Keep entries minimal: no relationships, no history, no implementation details. Under 20 lines total.
 
 ## Policies & Mandatory Rules
 
 ### Mandatory Skill Usage
+
+Skills are accumulated over time. If the project has none yet, keep only this heading and the placeholder below — do not fabricate skills.
 
 #### `$skill-name`
 
@@ -39,7 +53,7 @@ When changing public APIs, persisted data, config files, CLI flags, plugin contr
 - Prefer direct migrations and simple current-state code over compatibility layers.
 - Document intentional breaking changes in the final response; update `CHANGELOG.md` when it exists or when the project already uses release notes.
 
-### [Domain-Specific Rule]
+### [Project-Specific Rule]
 
 [Rule statement. Use imperative mood.]
 
@@ -73,11 +87,6 @@ When changing public APIs, persisted data, config files, CLI flags, plugin contr
 - [Rule 2]
 
 ## Operation Guide
-
-### Prerequisites
-
-- [Tool/version requirement]
-- [Tool/version requirement]
 
 ### Development Workflow
 
