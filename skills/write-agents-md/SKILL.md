@@ -80,7 +80,11 @@ For `Project Structure Guide` → `Repo Structure & Important Files`, use a plai
 │   ├── core/               # Core domain logic
 │   └── server/             # Server entrypoints
 ├── tests/                  # Automated tests
-├── docs/                   # Product and architecture docs
+├── docs/                   # Project documentation
+│   └── engineering/        # Current engineering intent — living docs
+│       ├── authentication.md  # e.g. auth strategy, token lifecycle
+│       ├── persistence.md     # e.g. storage decisions, data model constraints
+│       └── ...
 └── package.json            # Scripts and dependencies
 ```
 

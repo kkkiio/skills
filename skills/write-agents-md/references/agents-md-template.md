@@ -53,6 +53,14 @@ When changing public APIs, persisted data, config files, CLI flags, plugin contr
 - Prefer direct migrations and simple current-state code over compatibility layers.
 - Document intentional breaking changes in the final response; update `CHANGELOG.md` when it exists or when the project already uses release notes.
 
+### Documentation Intent Principle
+
+Documents record intent, code implements it. Intent is the source of truth.
+
+- Write documents before changing code when intent changes.
+- Treat documents as living — update or delete when intent shifts.
+- Git preserves document history; documents preserve current intent.
+
 ### [Project-Specific Rule]
 
 [Rule statement. Use imperative mood.]
@@ -75,7 +83,11 @@ When changing public APIs, persisted data, config files, CLI flags, plugin contr
 │   ├── core/               # [Core domain logic]
 │   └── server/             # [Server entrypoints]
 ├── tests/                  # [Automated tests]
-├── docs/                   # [Product and architecture docs]
+├── docs/                   # [Project documentation]
+│   └── engineering/        # [Current engineering intent — living docs]
+│       ├── authentication.md  # [e.g. auth strategy, token lifecycle]
+│       ├── persistence.md     # [e.g. storage decisions, data model constraints]
+│       └── ...
 └── package.json            # [Scripts and dependencies]
 ```
 
