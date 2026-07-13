@@ -3,6 +3,8 @@
 ```markdown
 # [Project Name]
 
+<!-- README is a getting-started guide, not full docs. Keep it to: what it is, how to install, how to run. Put detailed reference (API, config, architecture) in docs/prd.md or docs/prd/. -->
+
 [One paragraph: what this project is and what it does.]
 
 ## Installation
@@ -15,7 +17,7 @@
 
 ## Usage
 
-[How to use the project. Include runnable examples.]
+[Minimal runnable example demonstrating the core workflow. Not every feature — just enough to confirm it works.]
 
 ```bash
 [usage command]

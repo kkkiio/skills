@@ -7,6 +7,18 @@ description: Write or update README.md for a project. README.md is for users (hu
 
 Use this skill when creating or updating `README.md`.
 
+## Philosophy: Get Started, Not Full Docs
+
+README.md is a **getting-started guide** — the minimal path from zero to running. A new user should be able to install and see the project in action within a few minutes. It is **not** comprehensive documentation.
+
+Detailed reference material belongs elsewhere, depending on project needs:
+- API docs, configuration reference, architecture decisions → `docs/prd.md` or `docs/prd/`
+- Changelog → `CHANGELOG.md` or GitHub Releases
+- Contributing guide → `CONTRIBUTING.md`
+- In-depth tutorials → project wiki or documentation site
+
+When in doubt, keep it out of README. A short README that gets someone running is better than a long one nobody finishes.
+
 ## Mandatory Structure
 
 Only three things are required:
@@ -30,7 +42,7 @@ How to install and set up the project.
 
 ### 3. H2 — Usage
 
-How to use the project. Include runnable examples where helpful.
+How to use the project. Give a **minimal, runnable example** that demonstrates the core workflow — not every feature. Copy-paste should just work.
 
 ## Optional Sections
 
