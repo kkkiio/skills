@@ -58,8 +58,8 @@ When changing public APIs, persisted data, config files, CLI flags, plugin contr
 Documents record intent, code implements it. Intent is the source of truth.
 
 - Write documents before changing code when intent changes.
-- Treat documents as living — update or delete when intent shifts.
-- Git preserves document history; documents preserve current intent.
+- Treat documents as living — record current intent, never intermediate states. Update or delete when intent shifts.
+- Git preserves document history; documents preserve current intent. Delete obsolete docs without hesitation.
 
 ### [Project-Specific Rule]
 

@@ -20,18 +20,6 @@ Every `AGENTS.md` must use `# AGENTS.md` as the single H1 title, followed by the
 
 If a section has no content yet, keep the H2 heading and add a placeholder — never omit a section. Any subsections must start at H3.
 
-### Domain Language
-
-Every project has terms whose meanings differ from common usage — an agent misunderstanding them causes wrong implementation. Always include this section.
-
-Every entry follows this format:
-
-```markdown
-- **Term** — One-sentence definition of what it IS (not what it does).
-```
-
-Add `_Avoid_: synonym, another-synonym` only when an agent might substitute a confusing synonym. Do not include relationships between terms, historical ambiguities, implementation details, or maintenance rules. Keep the total under 20 lines — each line costs tokens in every session.
-
 ## Key Style Principles
 
 ### 1. Trigger-Based Rules
@@ -88,13 +76,26 @@ For `Project Structure Guide` → `Repo Structure & Important Files`, use a plai
 └── package.json            # Scripts and dependencies
 ```
 
-### 7. Compatibility Policy
+### 7. Domain Language Entries
+
+Every project has terms whose meanings differ from common usage — an agent misunderstanding them causes wrong implementation. Good candidates for domain terms are easy to spot: they're the words users say repeatedly, and they're typically English terms that overlap with type names in code. The `Domain Language` section must have:
+
+- One entry per line: `- **Term** — One-sentence definition of what it IS (not what it does).`
+- `_Avoid_: synonym` only when an agent might substitute a confusing synonym.
+- No relationships, history, implementation details, or maintenance rules.
+- Keep under 20 lines — each line costs tokens in every session.
+
+## Recommended Policies
+
+The following subsections are recommended additions under `Policies & Mandatory Rules` in every AGENTS.md.
+
+### Compatibility Policy
 
 When project stability expectations affect implementation choices, add a `Compatibility Policy` subsection under `Policies & Mandatory Rules`.
 
 For self-use, early-stage, or 0.x projects, use a concise policy like:
 
-```text
+```markdown
 ### Compatibility Policy
 
 When changing public APIs, persisted data, config files, CLI flags, plugin contracts, or user-facing workflows, follow this project's compatibility policy.
@@ -102,6 +103,20 @@ When changing public APIs, persisted data, config files, CLI flags, plugin contr
 - Project at 0.x: zero stability guarantees.
 - Prefer direct migrations and simple current-state code over compatibility layers.
 - Document intentional breaking changes in the final response; update `CHANGELOG.md` when it exists or when the project already uses release notes.
+```
+
+### Documentation Intent Principle
+
+Documents record intent, code implements it. Add a `Documentation Intent Principle` subsection under `Policies & Mandatory Rules`:
+
+```markdown
+### Documentation Intent Principle
+
+Documents record intent, code implements it. Intent is the source of truth.
+
+- Write documents before changing code when intent changes.
+- Treat documents as living — record current intent, never intermediate states. Update or delete when intent shifts.
+- Git preserves document history; documents preserve current intent. Delete obsolete docs without hesitation.
 ```
 
 ## README vs AGENTS Boundary
