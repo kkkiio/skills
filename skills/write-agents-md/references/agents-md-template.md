@@ -27,24 +27,6 @@ Keep entries minimal: no relationships, no history, no implementation details. U
 
 ## Policies & Mandatory Rules
 
-### Mandatory Skill Usage
-
-Skills are accumulated over time. If the project has none yet, keep only this heading and the placeholder below — do not fabricate skills.
-
-#### `$skill-name`
-
-[Describe when this skill MUST be used.]
-
-Run it when you change:
-- [file/directory pattern]
-- [file/directory pattern]
-
-You can skip `$skill-name` for [list exceptions], unless [explicit condition].
-
-#### `$another-skill`
-
-[Description and trigger conditions.]
-
 ### Compatibility Policy
 
 When changing public APIs, persisted data, config files, CLI flags, plugin contracts, or user-facing workflows, follow this project's compatibility policy.
@@ -57,7 +39,7 @@ When changing public APIs, persisted data, config files, CLI flags, plugin contr
 
 Documents record intent, code implements it. Intent is the source of truth.
 
-- Write documents before changing code when intent changes.
+- Write documents before changing code when intent changes. Name files by intent (`verb-noun.md`), not topic (`database.md`).
 - Treat documents as living — record current intent, never intermediate states. Update or delete when intent shifts.
 - Git preserves document history; documents preserve current intent. Delete obsolete docs without hesitation.
 
@@ -85,8 +67,8 @@ Documents record intent, code implements it. Intent is the source of truth.
 ├── tests/                  # [Automated tests]
 ├── docs/                   # [Project documentation]
 │   └── engineering/        # [Current engineering intent — living docs]
-│       ├── authentication.md  # [e.g. auth strategy, token lifecycle]
-│       ├── persistence.md     # [e.g. storage decisions, data model constraints]
+│       ├── use-jwt-for-sessions.md  # [e.g. auth strategy, token lifecycle]
+│       ├── add-rate-limiting.md  # [e.g. storage decisions, data model constraints]
 │       └── ...
 └── package.json            # [Scripts and dependencies]
 ```
