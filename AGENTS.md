@@ -50,6 +50,12 @@ This repository is a collection of skills for the `npx skills` ecosystem. Each s
 
 ```
 skills/
+├── pi-explore/              # pi agent only
+│   └── SKILL.md
+├── ship-with-codex-cloud/   # pi agent only
+│   └── SKILL.md
+├── ship-with-pi/            # pi agent only
+│   └── SKILL.md
 ├── write-agents-md/
 │   ├── SKILL.md
 │   └── references/
@@ -65,6 +71,13 @@ skills/
 - `skills/<name>/references/` — optional supporting files referenced by the skill.
 - `README.md` — user-facing project description and usage.
 - `AGENTS.md` — this file.
+
+### Skill Compatibility
+
+Some skills are universal (`write-agents-md`, `write-readme-md`) — they work with any coding agent. Others are tool-specific and only work with a particular agent runtime:
+
+- `pi-explore`, `ship-with-pi` — pi only.
+- `ship-with-codex-cloud` — pi only (spawns `codex cloud`).
 
 ### Skill Structure
 
