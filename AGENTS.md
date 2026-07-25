@@ -43,7 +43,11 @@ After every `git push` to `main`, run the install verification:
 npx skills add kkkiio/skills -y -g
 ```
 
-This validates that the repository is correctly structured and installable via the skills CLI. The `-g` flag ensures skills install to `~/.agents/skills/` — do not use any other target directory.
+For pi-only skills, add `--agent pi`:
+
+```bash
+npx skills add kkkiio/skills -y -g --agent pi --skill pi-explore --skill ship-with-pi --skill ship-with-codex-cloud
+```
 
 If installation fails, fix the issue before considering the push complete.
 
