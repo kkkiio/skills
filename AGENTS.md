@@ -37,15 +37,13 @@ Run `$write-agents-md` when adding new mandatory rules, restructuring directorie
 
 ### Post-Push Verification
 
-After every `git push` to `main`, run the install verification:
+After every `git push` to `main`, verify the install works:
 
 ```bash
-npx skills add kkkiio/skills -y -g
-```
+# Universal skills → all agents
+npx skills add kkkiio/skills -y -g --skill write-agents-md --skill write-readme-md
 
-For pi-only skills, add `--agent pi`:
-
-```bash
+# Pi-only skills → pi only
 npx skills add kkkiio/skills -y -g --agent pi --skill pi-explore --skill ship-with-pi --skill ship-with-codex-cloud
 ```
 
