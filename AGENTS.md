@@ -34,6 +34,19 @@ This validates that the repository is correctly structured and installable via t
 
 If installation fails, fix the issue before considering the push complete.
 
+### Skill Compatibility
+
+Some skills are universal (`write-agents-md`, `write-readme-md`) — they work with any coding agent. Others are tool-specific and only work with a particular agent runtime:
+
+- `pi-explore`, `ship-with-pi` — pi only.
+- `ship-with-codex-cloud` — pi only (spawns `codex cloud`).
+
+Install pi-only skills with `--agent pi`:
+
+```bash
+npx skills add kkkiio/skills -y -g --agent pi --skill pi-explore --skill ship-with-pi --skill ship-with-codex-cloud
+```
+
 ### Skill File Naming
 
 - Every skill lives under `skills/<skill-name>/SKILL.md`.
@@ -71,19 +84,6 @@ skills/
 - `skills/<name>/references/` — optional supporting files referenced by the skill.
 - `README.md` — user-facing project description and usage.
 - `AGENTS.md` — this file.
-
-### Skill Compatibility
-
-Some skills are universal (`write-agents-md`, `write-readme-md`) — they work with any coding agent. Others are tool-specific and only work with a particular agent runtime:
-
-- `pi-explore`, `ship-with-pi` — pi only.
-- `ship-with-codex-cloud` — pi only (spawns `codex cloud`).
-
-Install pi-only skills with `--agent pi`:
-
-```bash
-npx skills add kkkiio/skills -y -g --agent pi --skill pi-explore --skill ship-with-pi --skill ship-with-codex-cloud
-```
 
 ### Skill Structure
 
