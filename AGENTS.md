@@ -79,6 +79,12 @@ Some skills are universal (`write-agents-md`, `write-readme-md`) — they work w
 - `pi-explore`, `ship-with-pi` — pi only.
 - `ship-with-codex-cloud` — pi only (spawns `codex cloud`).
 
+Install pi-only skills with `--agent pi`:
+
+```bash
+npx skills add kkkiio/skills -y -g --agent pi --skill pi-explore --skill ship-with-pi --skill ship-with-codex-cloud
+```
+
 ### Skill Structure
 
 Every `SKILL.md` has:
