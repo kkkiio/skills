@@ -9,7 +9,7 @@ Spawn a pi sub-agent for coding and execution:
 
 ```bash
 pi -p --no-session \
-  --provider openai --model gpt-5.6-terra --thinking high \
+  --provider openai-codex --model gpt-5.6-terra --thinking high \
   "<specific, actionable task>"
 ```
 
