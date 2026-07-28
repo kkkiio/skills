@@ -94,6 +94,9 @@ Temporary. Delete when done.
 │       ├── 0002-add-rate-limiting.md
 │       └── archive/        # [Superseded decisions]
 │           └── 0000-use-sessions-in-redis.md
+├── .agents/                # [Agent working files]
+│   └── drift-notes/        # [Temporary implementation deviation logs]
+│       └── file-upload.md
 └── package.json            # [Scripts and dependencies]
 ```
 
