@@ -65,10 +65,11 @@ For `Project Structure Guide` → `Repo Structure & Important Files`, use a plai
 │   └── server/             # Server entrypoints
 ├── tests/                  # Automated tests
 ├── docs/                   # Project documentation
-│   └── engineering/        # Current engineering intent — living docs
-│       ├── use-jwt-for-sessions.md  # e.g. auth strategy, token lifecycle
-│       ├── add-rate-limiting.md  # e.g. storage decisions, data model constraints
-│       └── ...
+│   └── adr/                # Architecture Decision Records — current decisions
+│       ├── 0001-use-jwt-for-sessions.md
+│       ├── 0002-add-rate-limiting.md
+│       └── archive/        # Superseded decisions
+│           └── 0000-use-sessions-in-redis.md
 └── package.json            # Scripts and dependencies
 ```
 
@@ -110,9 +111,8 @@ Documents record intent, code implements it. Add a `Documentation Intent Princip
 
 Documents record intent, code implements it. Intent is the source of truth.
 
-- Write documents before changing code when intent changes. Name files by intent (`verb-noun.md`), not topic (`database.md`).
-- Treat documents as living — record current intent, never intermediate states. Update or delete when intent shifts.
-- Git preserves document history; documents preserve current intent. Delete obsolete docs without hesitation.
+- Write documents before changing code when intent changes. Name files by intent, not topic.
+- Treat documents as living — record current intent, never intermediate states. Update when intent shifts; move obsolete docs to `docs/adr/archive/` instead of deleting.
 ```
 
 ## README vs AGENTS Boundary
