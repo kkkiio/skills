@@ -22,7 +22,7 @@ Some skills are universal (`write-agents-md`, `write-readme-md`) — they work w
 Install pi-only skills with `--agent pi`:
 
 ```bash
-npx skills add kkkiio/skills -y -g --agent pi --skill pi-explore --skill ship-with-pi --skill ship-with-codex-cloud
+agconf fetch kkkiio/skills -g -a pi
 ```
 
 ### Mandatory Skill Usage
@@ -41,10 +41,10 @@ After every `git push` to `main`, verify the install works:
 
 ```bash
 # Universal skills → all agents
-npx skills add kkkiio/skills -y -g --skill write-agents-md --skill write-readme-md
+agconf fetch kkkiio/skills -g
 
 # Pi-only skills → pi only
-npx skills add kkkiio/skills -y -g --agent pi --skill pi-explore --skill ship-with-pi --skill ship-with-codex-cloud
+agconf fetch kkkiio/skills -g -a pi
 ```
 
 If installation fails, fix the issue before considering the push complete.
@@ -59,7 +59,7 @@ If installation fails, fix the issue before considering the push complete.
 
 ### Overview
 
-This repository is a collection of skills for the `npx skills` ecosystem. Each skill is a self-contained directory with a `SKILL.md` that defines instructions for coding agents.
+This repository is a collection of skills and prompts for use with `agconf fetch`. Each skill is a self-contained directory with a `SKILL.md` that defines instructions for coding agents.
 
 ### Repo Structure
 
@@ -100,7 +100,7 @@ Every `SKILL.md` has:
 
 ### Prerequisites
 
-- Node.js (for `npx skills`)
+- agconf (for `agconf fetch`)
 - Git
 
 ### Development Workflow
@@ -115,9 +115,9 @@ Every `SKILL.md` has:
    ```
 4. Verify the push by installing from the remote:
    ```bash
-   npx skills add kkkiio/skills -y -g
+   agconf fetch kkkiio/skills -g
    ```
-5. Confirm skills land in `~/.agents/skills/`:
+5. Confirm skills land:
    ```bash
    ls ~/.agents/skills/<skill-name>/SKILL.md
    ```
@@ -130,4 +130,4 @@ Every `SKILL.md` has:
    ```
 2. Copy an existing `SKILL.md` as a starting point and adapt.
 3. Write the skill instructions.
-4. Push and verify with `npx skills add kkkiio/skills -y -g`.
+4. Push and verify with `agconf fetch kkkiio/skills -g`.
