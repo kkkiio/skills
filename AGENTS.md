@@ -22,7 +22,7 @@ Some skills are universal (`write-agents-md`, `write-readme-md`) — they work w
 Install pi-only skills with `--agent pi`:
 
 ```bash
-agconf fetch kkkiio/skills -g -a pi
+agconf fetch https://github.com/kkkiio/skills -g -a pi
 ```
 
 ### Mandatory Skill Usage
@@ -41,10 +41,10 @@ After every `git push` to `main`, verify the changed content installs correctly:
 
 ```bash
 # Skill changed → fetch that skill only
-agconf fetch kkkiio/skills/skills/<skill-name> -g
+agconf fetch https://github.com/kkkiio/skills/blob/main/skills/<skill-name> -g
 
 # Prompt changed → fetch that prompt only (prompts need -a)
-agconf fetch kkkiio/skills/prompts/<prompt-name>.md -g -a pi
+agconf fetch https://github.com/kkkiio/skills/blob/main/prompts/<prompt-name>.md -g -a pi
 ```
 
 If installation fails, fix the issue before considering the push complete.
@@ -115,7 +115,7 @@ Every `SKILL.md` has:
    ```
 4. Verify the push by installing from the remote:
    ```bash
-   agconf fetch kkkiio/skills -g
+   agconf fetch https://github.com/kkkiio/skills -g
    ```
 5. Confirm skills land:
    ```bash
@@ -130,4 +130,4 @@ Every `SKILL.md` has:
    ```
 2. Copy an existing `SKILL.md` as a starting point and adapt.
 3. Write the skill instructions.
-4. Push and verify with `agconf fetch kkkiio/skills -g`.
+4. Push and verify with `agconf fetch https://github.com/kkkiio/skills -g`.
