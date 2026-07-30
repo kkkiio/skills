@@ -37,14 +37,14 @@ Run `$write-agents-md` when adding new mandatory rules, restructuring directorie
 
 ### Post-Push Verification
 
-After every `git push` to `main`, verify the install works:
+After every `git push` to `main`, verify the changed content installs correctly:
 
 ```bash
-# Universal skills → all agents
-agconf fetch kkkiio/skills -g
+# Skill changed → fetch that skill only
+agconf fetch kkkiio/skills/skills/<skill-name> -g
 
-# Pi-only skills → pi only
-agconf fetch kkkiio/skills -g -a pi
+# Prompt changed → fetch that prompt only (prompts need -a)
+agconf fetch kkkiio/skills/prompts/<prompt-name>.md -g -a pi
 ```
 
 If installation fails, fix the issue before considering the push complete.
