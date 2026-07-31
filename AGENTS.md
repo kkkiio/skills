@@ -40,8 +40,8 @@ Run `$write-agents-md` when adding new mandatory rules, restructuring directorie
 After every `git push` to `main`, verify the changed content installs correctly:
 
 ```bash
-# Skill changed → fetch that skill only
-agconf fetch https://github.com/kkkiio/skills/blob/main/skills/<skill-name> -g
+# Skill changed → fetch that skill only (add -a pi for pi-only skills)
+agconf fetch https://github.com/kkkiio/skills/blob/main/skills/<skill-name> -g -a pi
 
 # Prompt changed → fetch that prompt only (prompts need -a)
 agconf fetch https://github.com/kkkiio/skills/blob/main/prompts/<prompt-name>.md -g -a pi
