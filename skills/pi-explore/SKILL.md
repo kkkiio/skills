@@ -9,7 +9,7 @@ Spawn a read-only pi sub-agent for codebase exploration:
 
 ```bash
 pi -p --no-session \
-  --provider deepseek --model deepseek-v4-flash --thinking high \
+  --provider openai-codex --model 'gpt-5.6 luna' --thinking high \
   --tools read,grep,find,ls,bash \
   "<focused exploration prompt>"
 ```
