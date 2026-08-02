@@ -7,12 +7,38 @@ Brief one-liner describing what this project is and what this guide covers.
 
 **Location:** `AGENTS.md` at the repository root.
 
-## Table of Contents
+## Project Structure Guide
 
-1. [Domain Language](#domain-language)
-2. [Policies & Mandatory Rules](#policies--mandatory-rules)
-3. [Project Structure Guide](#project-structure-guide)
-4. [Operation Guide](#operation-guide)
+### Overview
+
+<1-2 sentences about the project.>
+
+### Repo Structure & Important Files
+
+```text
+.
+├── src/                    # <Runtime source>
+│   ├── core/               # <Core domain logic>
+│   └── server/             # <Server entrypoints>
+├── tests/                  # <Automated tests>
+├── docs/                   # <Project documentation>
+│   └── adr/                # <Architecture Decision Records — current decisions>
+│       ├── 0001-use-jwt-for-sessions.md
+│       ├── 0002-add-rate-limiting.md
+│       └── archive/        # <Superseded decisions>
+│           └── 0000-use-sessions-in-redis.md
+├── .agents/                # <Agent working files>
+│   └── drift-notes/        # <Temporary implementation deviation logs>
+│       └── file-upload.md
+└── package.json            # <Scripts and dependencies>
+```
+
+### <Domain-Specific Architecture Guidelines>
+
+<Guidelines for the core runtime/module/etc.>
+
+- <Rule 1>
+- <Rule 2>
 
 ## Domain Language
 
@@ -66,75 +92,42 @@ Temporary. Delete when done.
   avoids the operational risk of a pub/sub dependency for an infrequent event.
 ```
 
-### [Project-Specific Rule]
+### <Project-Specific Rule>
 
-[Rule statement. Use imperative mood.]
+<Rule statement. Use imperative mood.>
 
-[Condition: when this rule applies.]
+<Condition: when this rule applies.>
 
-[Exception: when it does not apply.]
-
-## Project Structure Guide
-
-### Overview
-
-[1-2 sentences about the project.]
-
-### Repo Structure & Important Files
-
-```text
-.
-├── src/                    # [Runtime source]
-│   ├── core/               # [Core domain logic]
-│   └── server/             # [Server entrypoints]
-├── tests/                  # [Automated tests]
-├── docs/                   # [Project documentation]
-│   └── adr/                # [Architecture Decision Records — current decisions]
-│       ├── 0001-use-jwt-for-sessions.md
-│       ├── 0002-add-rate-limiting.md
-│       └── archive/        # [Superseded decisions]
-│           └── 0000-use-sessions-in-redis.md
-├── .agents/                # [Agent working files]
-│   └── drift-notes/        # [Temporary implementation deviation logs]
-│       └── file-upload.md
-└── package.json            # [Scripts and dependencies]
-```
-
-### [Domain-Specific Architecture Guidelines]
-
-[Guidelines for the core runtime/module/etc.]
-
-- [Rule 1]
-- [Rule 2]
+<Exception: when it does not apply.>
 
 ## Operation Guide
 
 ### Development Workflow
 
-1. [Step 1]:
+1. <Step 1>:
    ```bash
-   [command]
+   <command>
    ```
-2. [Step 2]:
+2. <Step 2>:
    ```bash
-   [command]
+   <command>
    ```
-3. [Step 3]
+3. <Step 3>
 
 ### Testing & Automated Checks
 
-[When to run which checks.]
+<When to run which checks.>
 
-#### [Test category]
+#### <Test category>
 
 ```bash
-[command]
+<command>
 ```
 
 ### Utilities & Tips
 
-- [Tip]:
+- <Tip>:
   ```bash
-  [command]
+  <command>
   ```
 ````

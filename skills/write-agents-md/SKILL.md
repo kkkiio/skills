@@ -1,6 +1,6 @@
 ---
 name: write-agents-md
-description: Write or update AGENTS.md for a project. AGENTS.md is for developer agents — where things are and how to build/test/modify. Use when creating AGENTS.md from scratch, adding new rules or skills, restructuring the repo, or when asked to "maintain the AGENTS guide".
+description: Write or update AGENTS.md for a project. AGENTS.md is for developer agents — where things are and how to build/test/modify.
 ---
 
 # Write AGENTS.md
@@ -13,12 +13,14 @@ Every `AGENTS.md` must use `# AGENTS.md` as the single H1 title, followed by the
 
 | Section | Purpose | Must Answer |
 |---------|---------|-------------|
+| **Project Structure Guide** | Directory layout, key files, architecture guidelines | "Where is everything and how is it organized?" |
 | **Domain Language** | Project-specific terminology agents cannot infer from code | "What do these words mean in this project?" |
 | **Policies & Mandatory Rules** | Hard rules that constrain agent behavior | "What must the agent always / never do?" |
-| **Project Structure Guide** | Directory layout, key files, architecture guidelines | "Where is everything and how is it organized?" |
 | **Operation Guide** | Dev environment, workflows, test commands, tooling | "How do I run, test, and build this project?" |
 
 If a section has no content yet, keep the H2 heading and add a placeholder — never omit a section. Any subsections must start at H3.
+
+**Project Structure Guide** must include a `### Repo Structure & Important Files` subsection with a directory tree (see Principle #5). **Domain Language** formatting rules are detailed in Principle #6.
 
 ## Key Style Principles
 
@@ -31,7 +33,7 @@ When you change:
 - src/foo/ (runtime code)
 - tests/ (test code)
 
-Run `make test && make lint`. Skip for docs-only changes, unless [condition].
+Run `make test && make lint`. Skip for docs-only changes.
 ```
 
 Never write a rule without a trigger condition. "Always do X" is acceptable only when it truly has no exceptions.
@@ -60,20 +62,26 @@ For `Project Structure Guide` → `Repo Structure & Important Files`, use a plai
 
 ```text
 .
-├── src/                    # Runtime source
-│   ├── core/               # Core domain logic
-│   └── server/             # Server entrypoints
-├── tests/                  # Automated tests
-├── docs/                   # Project documentation
-│   └── adr/                # Architecture Decision Records — current decisions
+├── AGENTS.md                   # Root — 全局规则 + 索引子 AGENTS.md
+├── tests/                      # Automated tests
+├── docs/                       # Project documentation
+│   └── adr/                    # Architecture Decision Records — current decisions
 │       ├── 0001-use-jwt-for-sessions.md
 │       ├── 0002-add-rate-limiting.md
-│       └── archive/        # Superseded decisions
+│       └── archive/            # Superseded decisions
 │           └── 0000-use-sessions-in-redis.md
-├── .agents/                # Agent working files
-│   └── drift-notes/        # Temporary implementation deviation logs
+├── packages/                   # Multi-root sub-projects
+│   ├── frontend/
+│   │   └── AGENTS.md           # Sub — 前端专属规则
+│   └── backend/
+│       └── AGENTS.md           # Sub — 后端专属规则
+├── examples/                   # 独立示例项目
+│   └── chat-demo/
+│       └── AGENTS.md           # Sub — 示例项目规则
+├── .agents/                    # Agent working files
+│   └── drift-notes/            # Temporary implementation deviation logs
 │       └── file-upload.md
-└── package.json            # Scripts and dependencies
+└── package.json                # Scripts and dependencies
 ```
 
 ### 6. Domain Language Entries
@@ -87,40 +95,21 @@ Every project has terms whose meanings differ from common usage — an agent mis
 
 ## Recommended Policies
 
-The following subsections are recommended additions under `Policies & Mandatory Rules` in every AGENTS.md.
+The following subsections are recommended additions under `Policies & Mandatory Rules` in every AGENTS.md. Full templates and examples are in `references/agents-md-template.md`.
 
 ### Compatibility Policy
 
 When project stability expectations affect implementation choices, add a `Compatibility Policy` subsection under `Policies & Mandatory Rules`.
 
-For self-use, early-stage, or 0.x projects, use a concise policy like:
-
-```markdown
-### Compatibility Policy
-
-When changing public APIs, persisted data, config files, CLI flags, plugin contracts, or user-facing workflows, follow this project's compatibility policy.
-
-- Project at 0.x: zero stability guarantees.
-- Prefer direct migrations and simple current-state code over compatibility layers.
-- Document intentional breaking changes in the final response; update `CHANGELOG.md` when it exists or when the project already uses release notes.
-```
+For example, a self-use or 0.x project might state: zero stability guarantees, prefer direct migrations over compatibility layers.
 
 ### Documentation Intent Principle
 
-Documents record intent, code implements it. Add a `Documentation Intent Principle` subsection under `Policies & Mandatory Rules`:
-
-```markdown
-### Documentation Intent Principle
-
-Documents record intent, code implements it. Intent is the source of truth.
-
-- Write documents before changing code when intent changes. Name files by intent, not topic.
-- Treat documents as living — record current intent, never intermediate states. Update when intent shifts; move obsolete docs to `docs/adr/archive/` instead of deleting.
-```
+Documents record intent, code implements it. Add a `Documentation Intent Principle` subsection under `Policies & Mandatory Rules`.
 
 ### Drift Notes
 
-Implementation inevitably surfaces unknown unknowns that force deviations from the plan. Log them in temporary notes so the next session (human or agent) can pick up the context. Add a `Drift Notes` subsection under `Policies & Mandatory Rules`. See `references/agents-md-template.md` for the full template and example.
+Implementation inevitably surfaces unknown unknowns that force deviations from the plan. Log them in temporary notes so the next session (human or agent) can pick up the context. Add a `Drift Notes` subsection under `Policies & Mandatory Rules`.
 
 ## README vs AGENTS Boundary
 
@@ -149,10 +138,8 @@ Update AGENTS.md when:
 ## Update Workflow
 
 1. Read the existing `AGENTS.md` first.
-2. Identify which section the content belongs to (Domain Language, Policies, Structure, Operation).
+2. Identify which section the content belongs to (Structure, Domain Language, Policies, Operation).
 3. Add content under the correct section.
-4. Update the Table of Contents if headings changed.
-5. Keep each section ordered by importance — most critical first.
 
 ## Templates
 
