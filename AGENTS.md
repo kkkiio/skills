@@ -4,11 +4,17 @@ Agent guide for the `kkkiio/skills` collection — reusable skills for coding ag
 
 **Location:** `AGENTS.md` at the repository root.
 
-## Table of Contents
+**Table of Contents**
 
-1. [Policies & Mandatory Rules](#policies--mandatory-rules)
-2. [Project Structure Guide](#project-structure-guide)
-3. [Operation Guide](#operation-guide)
+1. [Domain Language](#domain-language)
+2. [Policies & Mandatory Rules](#policies--mandatory-rules)
+3. [Project Structure Guide](#project-structure-guide)
+4. [Operation Guide](#operation-guide)
+
+## Domain Language
+
+- **Skill** — A self-contained `skills/<skill-name>/` directory whose `SKILL.md` teaches a coding agent reusable knowledge or behavior.
+- **Prompt** — A standalone Markdown instruction under `prompts/` that is installed for an explicitly selected agent runtime.
 
 ## Policies & Mandatory Rules
 
@@ -16,7 +22,7 @@ Agent guide for the `kkkiio/skills` collection — reusable skills for coding ag
 
 Some skills are universal (`write-agents-md`, `write-readme-md`) — they work with any coding agent. Others are tool-specific and only work with a particular agent runtime:
 
-- `pi-explore`, `ship-with-pi` — pi only.
+- `herdr-subagents`, `pi-explore`, `ship-with-pi` — pi only.
 - `ship-with-codex-cloud` — pi only (spawns `codex cloud`).
 
 Install pi-only skills with `--agent pi`:
@@ -63,8 +69,10 @@ This repository is a collection of skills and prompts for use with `agconf fetch
 
 ### Repo Structure
 
-```
+```text
 skills/
+├── herdr-subagents/         # pi agent only
+│   └── SKILL.md
 ├── pi-explore/              # pi agent only
 │   └── SKILL.md
 ├── ship-with-codex-cloud/   # pi agent only
