@@ -7,9 +7,25 @@ description: Write or update AGENTS.md for a project. AGENTS.md is for developer
 
 Use this skill when creating or updating `AGENTS.md`.
 
-## Mandatory Structure
+## Scope and Inheritance
 
-Every `AGENTS.md` must use `# AGENTS.md` as the single H1 title, followed by these H2 sections in this order:
+Treat the root `AGENTS.md` as the repository-wide guide. When working in a subtree, apply the root file and every `AGENTS.md` between the root and the target file.
+
+Name each document in its H1 so multiple `AGENTS.md` files are distinguishable:
+
+- Use `# <project-name> AGENTS.md` for the root file.
+- Use `# <directory-name> AGENTS.md` for a nested file.
+
+Write a nested `AGENTS.md` only as a delta from its ancestors:
+
+- Add rules, terminology, paths, and commands that are specific to that subtree.
+- Do not repeat inherited content.
+- State an override explicitly and scope it to the subtree. The closest nested instruction takes precedence when it conflicts with an ancestor.
+- Use only the headings needed for the delta; do not add empty sections or placeholders.
+
+## Root Mandatory Structure
+
+After its project-specific H1 title, the root `AGENTS.md` must contain these H2 sections in this order:
 
 | Section | Purpose | Must Answer |
 |---------|---------|-------------|
@@ -18,9 +34,9 @@ Every `AGENTS.md` must use `# AGENTS.md` as the single H1 title, followed by the
 | **Policies & Mandatory Rules** | Hard rules that constrain agent behavior | "What must the agent always / never do?" |
 | **Operation Guide** | Dev environment, workflows, test commands, tooling | "How do I run, test, and build this project?" |
 
-If a section has no content yet, keep the H2 heading and add a placeholder — never omit a section. Any subsections must start at H3.
+If a root section has no content yet, keep the H2 heading and add a placeholder — never omit a section. Any root subsections must start at H3.
 
-**Project Structure Guide** must include a `### Repo Structure & Important Files` subsection with a directory tree (see Principle #5). **Domain Language** formatting rules are detailed in Principle #6.
+The root **Project Structure Guide** must include a `### Repo Structure & Important Files` subsection with a directory tree (see Principle #5). **Domain Language** formatting rules are detailed in Principle #6.
 
 ## Key Style Principles
 
@@ -95,7 +111,7 @@ Every project has terms whose meanings differ from common usage — an agent mis
 
 ## Recommended Policies
 
-The following subsections are recommended additions under `Policies & Mandatory Rules` in every AGENTS.md. Full templates and examples are in `references/agents-md-template.md`.
+The following subsections are recommended additions under `Policies & Mandatory Rules` in the root `AGENTS.md`. Add one to a nested `AGENTS.md` only when the subtree introduces or overrides that policy. Full templates and examples are in `references/agents-md-template.md`.
 
 ### Compatibility Policy
 
@@ -137,10 +153,11 @@ Update AGENTS.md when:
 
 ## Update Workflow
 
-1. Read the existing `AGENTS.md` first.
-2. Identify which section the content belongs to (Structure, Domain Language, Policies, Operation).
-3. Add content under the correct section.
+1. Locate the target file, then read the root `AGENTS.md` and every existing `AGENTS.md` on the path to it.
+2. For the root file, identify which mandatory section the content belongs to (Structure, Domain Language, Policies, Operation).
+3. For a nested file, remove content already supplied by an ancestor and keep only subtree-specific additions or explicit overrides.
+4. Add the content under the appropriate heading.
 
 ## Templates
 
-- `references/agents-md-template.md` — AGENTS.md skeleton.
+- `references/agents-md-template.md` — root AGENTS.md skeleton.

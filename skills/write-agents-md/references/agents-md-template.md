@@ -1,7 +1,4 @@
-# AGENTS.md Template
-
-````markdown
-# AGENTS.md
+# <Project Name> AGENTS.md
 
 Brief one-liner describing what this project is and what this guide covers.
 
@@ -130,4 +127,3 @@ Temporary. Delete when done.
   ```bash
   <command>
   ```
-````
