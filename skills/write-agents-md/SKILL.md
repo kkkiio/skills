@@ -81,10 +81,10 @@ For `Project Structure Guide` → `Repo Structure & Important Files`, use a plai
 ├── AGENTS.md                   # Root — 全局规则 + 索引子 AGENTS.md
 ├── tests/                      # Automated tests
 ├── docs/                       # Project documentation
-│   └── adr/                    # Architecture Decision Records — current decisions
+│   └── adr/                    # Architecture Decision Records (MADR format) — current decisions
 │       ├── 0001-use-jwt-for-sessions.md
 │       ├── 0002-add-rate-limiting.md
-│       └── superseded/         # Superseded decisions
+│       └── superseded/         # Superseded ADRs moved here
 │           └── 0000-use-sessions-in-redis.md
 ├── packages/                   # Multi-root sub-projects
 │   ├── frontend/
