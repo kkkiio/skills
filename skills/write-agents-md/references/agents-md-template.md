@@ -22,7 +22,7 @@ Brief one-liner describing what this project is and what this guide covers.
 │   └── adr/                # <Architecture Decision Records — current decisions>
 │       ├── 0001-use-jwt-for-sessions.md
 │       ├── 0002-add-rate-limiting.md
-│       └── archive/        # <Superseded decisions>
+│       └── superseded/     # <Superseded decisions>
 │           └── 0000-use-sessions-in-redis.md
 ├── .agents/                # <Agent working files>
 │   └── drift-notes/        # <Temporary implementation deviation logs>
@@ -63,7 +63,7 @@ When changing public APIs, persisted data, config files, CLI flags, plugin contr
 Documents record intent, code implements it. Intent is the source of truth.
 
 - Write documents before changing code when intent changes. Name files by intent, not topic.
-- Treat documents as living — record current intent, never intermediate states. Update when intent shifts; move obsolete docs to `docs/adr/archive/` instead of deleting.
+- Treat documents as living — record current intent, never intermediate states. Update when intent shifts; move obsolete docs to `docs/adr/superseded/` instead of deleting.
 
 ### Drift Notes
 

@@ -84,7 +84,7 @@ For `Project Structure Guide` → `Repo Structure & Important Files`, use a plai
 │   └── adr/                    # Architecture Decision Records — current decisions
 │       ├── 0001-use-jwt-for-sessions.md
 │       ├── 0002-add-rate-limiting.md
-│       └── archive/            # Superseded decisions
+│       └── superseded/         # Superseded decisions
 │           └── 0000-use-sessions-in-redis.md
 ├── packages/                   # Multi-root sub-projects
 │   ├── frontend/
