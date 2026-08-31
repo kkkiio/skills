@@ -62,6 +62,16 @@ Documents record intent, code implements it. Intent is the source of truth.
 - Write documents before changing code when intent changes. Name files by intent, not topic.
 - Treat documents as living — record current intent, never intermediate states. Update when intent shifts; move obsolete docs to `docs/adr/superseded/`.
 
+### Check Tiers
+
+Checks are tiered by cost and environment requirements.
+
+- **Fast tier** — lint, typecheck, unit tests. Deterministic, seconds to run, no special dependencies. Must stay runnable locally with one command.
+- **CI tier** — e2e, visual (e.g. screenshot tests needing tmux + Chrome), performance, multi-environment. Keep out of the default local suite; run in CI.
+
+- Put a new check in the fast tier unless it genuinely needs CI-only dependencies.
+- When verifying changes, run the fast tier. Do not try to reproduce CI-tier checks locally.
+
 ### <Project-Specific Rule>
 
 <Rule statement. Use imperative mood.>

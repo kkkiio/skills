@@ -120,6 +120,10 @@ For example, a self-use or 0.x project might state: zero stability guarantees, p
 
 Documents record intent, code implements it. Add a `Documentation Intent Principle` subsection under `Policies & Mandatory Rules`.
 
+### Check Tiers
+
+When the project's checks differ sharply in cost or environment requirements (e.g. screenshot tests that need tmux + Chrome), add a `Check Tiers` subsection under `Policies & Mandatory Rules`. It fixes the classification rule for where a new check belongs and which tier to run when verifying changes locally.
+
 ## README vs AGENTS Boundary
 
 | Audience | README.md | AGENTS.md |
