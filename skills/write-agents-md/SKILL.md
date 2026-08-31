@@ -94,9 +94,6 @@ For `Project Structure Guide` → `Repo Structure & Important Files`, use a plai
 ├── examples/                   # 独立示例项目
 │   └── chat-demo/
 │       └── AGENTS.md           # Sub — 示例项目规则
-├── .agents/                    # Agent working files
-│   └── drift-notes/            # Temporary implementation deviation logs
-│       └── file-upload.md
 └── package.json                # Scripts and dependencies
 ```
 
@@ -122,10 +119,6 @@ For example, a self-use or 0.x project might state: zero stability guarantees, p
 ### Documentation Intent Principle
 
 Documents record intent, code implements it. Add a `Documentation Intent Principle` subsection under `Policies & Mandatory Rules`.
-
-### Drift Notes
-
-Implementation inevitably surfaces unknown unknowns that force deviations from the plan. Log them in temporary notes so the next session (human or agent) can pick up the context. Add a `Drift Notes` subsection under `Policies & Mandatory Rules`.
 
 ## README vs AGENTS Boundary
 

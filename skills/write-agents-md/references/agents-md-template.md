@@ -24,9 +24,6 @@ Brief one-liner describing what this project is and what this guide covers.
 │       ├── 0002-add-rate-limiting.md
 │       └── superseded/     # <Superseded ADRs moved here>
 │           └── 0000-use-sessions-in-redis.md
-├── .agents/                # <Agent working files>
-│   └── drift-notes/        # <Temporary implementation deviation logs>
-│       └── file-upload.md
 └── package.json            # <Scripts and dependencies>
 ```
 
@@ -64,30 +61,6 @@ Documents record intent, code implements it. Intent is the source of truth.
 
 - Write documents before changing code when intent changes. Name files by intent, not topic.
 - Treat documents as living — record current intent, never intermediate states. Update when intent shifts; move obsolete docs to `docs/adr/superseded/`.
-
-### Drift Notes
-
-Write temporary notes to `.agents/drift-notes/<feature>.md` to log implementation deviations, edge cases, and conservative choices.
-
-- Drift notes are temporary — delete once resolved or incorporated into permanent docs.
-- One bullet per deviation (short) or a short paragraph (when the problem needs explanation).
-
-Example:
-
-```
-# File upload — drift notes
-
-Temporary. Delete when done.
-
-## Deviations
-
-- **S3 streaming**: Planned to stream directly to S3, but the reverse proxy
-  enforces a 10MB body limit → buffer to temp dir, upload in chunks.
-
-- **Session invalidation**: Redis key-space notifications aren't available
-  on the shared cluster. Polling every 60s with a grace window is simpler and
-  avoids the operational risk of a pub/sub dependency for an infrequent event.
-```
 
 ### <Project-Specific Rule>
 
