@@ -2,20 +2,6 @@
 
 Agent guide for the `kkkiio/skills` collection — reusable skills for coding agents.
 
-**Location:** `AGENTS.md` at the repository root.
-
-**Table of Contents**
-
-1. [Domain Language](#domain-language)
-2. [Policies & Mandatory Rules](#policies--mandatory-rules)
-3. [Project Structure Guide](#project-structure-guide)
-4. [Operation Guide](#operation-guide)
-
-## Domain Language
-
-- **Skill** — A self-contained `skills/<skill-name>/` directory whose `SKILL.md` teaches a coding agent reusable knowledge or behavior.
-- **Prompt** — A standalone Markdown instruction under `prompts/` that is installed for an explicitly selected agent runtime.
-
 ## Policies & Mandatory Rules
 
 ### Skill Compatibility
@@ -30,16 +16,6 @@ Install pi-only skills with `--agent pi`:
 ```bash
 agconf fetch https://github.com/kkkiio/skills -g -a pi
 ```
-
-### Mandatory Skill Usage
-
-#### `$write-readme-md`
-
-Run `$write-readme-md` when adding a new skill that needs a README, or when the project description, install steps, or usage instructions change.
-
-#### `$write-agents-md`
-
-Run `$write-agents-md` when adding new mandatory rules, restructuring directories, or changing build/test workflows.
 
 ### Post-Push Verification
 
@@ -103,6 +79,12 @@ Every `SKILL.md` has:
 2. **H1 heading** matching the skill name.
 3. **Mandatory structure** sections (per the skill's own rules).
 4. **References** directory for templates and supporting files.
+
+## Domain Language
+
+- **Skill** — A self-contained `skills/<skill-name>/` directory whose `SKILL.md` teaches a coding agent reusable knowledge or behavior.
+- **Prompt** — A standalone Markdown instruction under `prompts/` that is installed for an explicitly selected agent runtime.
+- **Recommended policy** — An optional predefined subsection (e.g. Compatibility Policy, Check Tiers) that the write-agents-md skill may add to an AGENTS.md's `Policies & Mandatory Rules`; templates live in `skills/write-agents-md/references/`.
 
 ## Operation Guide
 
