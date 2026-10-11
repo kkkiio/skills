@@ -4,32 +4,10 @@ Agent guide for the `kkkiio/skills` collection — reusable skills for coding ag
 
 ## Policies & Mandatory Rules
 
-### Skill Compatibility
+### Skill Scope
 
-Some skills are universal (`write-agents-md`, `write-readme-md`) — they work with any coding agent. Others are tool-specific and only work with a particular agent runtime:
-
-- `herdr-subagents`, `pi-explore`, `ship-with-pi` — pi only.
-- `ship-with-codex-cloud` — pi only (spawns `codex cloud`).
-
-Install pi-only skills with `--agent pi`:
-
-```bash
-agconf fetch https://github.com/kkkiio/skills -g -a pi
-```
-
-### Post-Push Verification
-
-After every `git push` to `main`, verify the changed content installs correctly:
-
-```bash
-# Skill changed → fetch that skill only (add -a pi for pi-only skills)
-agconf fetch https://github.com/kkkiio/skills/blob/main/skills/<skill-name> -g -a pi
-
-# Prompt changed → fetch that prompt only (prompts need -a)
-agconf fetch https://github.com/kkkiio/skills/blob/main/prompts/<prompt-name>.md -g -a pi
-```
-
-If installation fails, fix the issue before considering the push complete.
+- **Universal skills** (`write-agents-md`, `write-readme-md`) work in any project with any coding agent.
+- **Tech-stack skills** (`write-snapshot-test` — MoonBit only) are generic baselines meant to be adapted into a concrete project (e.g. via `prompts/adopt-guidance.md`). Keep them project-agnostic: state rules generically and put project-specific values (commands, paths, fixture names, custom primitives) in examples marked `例：`.
 
 ### Skill File Naming
 
@@ -47,27 +25,27 @@ This repository is a collection of skills and prompts for use with `agconf fetch
 
 ```text
 skills/
-├── herdr-subagents/         # pi agent only
-│   └── SKILL.md
-├── pi-explore/              # pi agent only
-│   └── SKILL.md
-├── ship-with-codex-cloud/   # pi agent only
-│   └── SKILL.md
-├── ship-with-pi/            # pi agent only
-│   └── SKILL.md
 ├── write-agents-md/
 │   ├── SKILL.md
 │   └── references/
 │       └── agents-md-template.md
-└── write-readme-md/
-    ├── SKILL.md
-    └── references/
-        └── readme-template.md
+├── write-readme-md/
+│   ├── SKILL.md
+│   └── references/
+│       └── readme-template.md
+└── write-snapshot-test/     # MoonBit only
+    └── SKILL.md
+prompts/
+├── adopt-guidance.md
+├── explain-changes.md
+├── implement-with-notes.md
+└── restate-intent.md
 ```
 
 - `skills/` — all skills. Each subdirectory is one installable skill.
 - `skills/<name>/SKILL.md` — the skill definition (frontmatter + instructions).
 - `skills/<name>/references/` — optional supporting files referenced by the skill.
+- `prompts/` — standalone prompts, installed for an explicitly selected agent runtime.
 - `README.md` — user-facing project description and usage.
 - `AGENTS.md` — this file.
 
@@ -90,8 +68,8 @@ Every `SKILL.md` has:
 
 ### Prerequisites
 
-- agconf (for `agconf fetch`)
 - Git
+- agconf (for installing and updating skills and prompts)
 
 ### Development Workflow
 
@@ -103,21 +81,23 @@ Every `SKILL.md` has:
    git commit -m "<type>(<skill>): <description>"
    git push
    ```
-4. Verify the push by installing from the remote:
+4. Ask the user whether to update the installed skill:
    ```bash
-   agconf fetch https://github.com/kkkiio/skills -g
-   ```
-5. Confirm skills land:
-   ```bash
-   ls ~/.agents/skills/<skill-name>/SKILL.md
+   agconf fetch https://github.com/kkkiio/skills/blob/main/skills/<skill-name> -g
    ```
 
-### From Scratch: Creating a New Skill
+### Installing & Updating
 
-1. Create the directory and SKILL.md:
-   ```bash
-   mkdir -p skills/<new-skill>/references
-   ```
-2. Copy an existing `SKILL.md` as a starting point and adapt.
-3. Write the skill instructions.
-4. Push and verify with `agconf fetch https://github.com/kkkiio/skills -g`.
+`agconf fetch` overwrites existing installed content by default (`--conflict overwrite`), so the same commands both install and update. Use `--dry-run` to preview.
+
+```bash
+# From GitHub (after pushing)
+# All skills
+agconf fetch https://github.com/kkkiio/skills -g
+
+# A single skill
+agconf fetch https://github.com/kkkiio/skills/blob/main/skills/<skill-name> -g
+
+# A single prompt (prompts need an explicit agent runtime)
+agconf fetch https://github.com/kkkiio/skills/blob/main/prompts/<prompt-name>.md -g -a <agent>
+```
