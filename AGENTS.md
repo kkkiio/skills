@@ -38,6 +38,7 @@ skills/
 prompts/
 ├── adopt-guidance.md
 ├── explain-changes.md
+├── huh.md
 ├── implement-with-notes.md
 └── restate-intent.md
 ```
