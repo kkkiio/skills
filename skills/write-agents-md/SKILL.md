@@ -27,12 +27,12 @@ Write a nested `AGENTS.md` only as a delta from its ancestors:
 
 After its project-specific H1 title, the root `AGENTS.md` must contain these H2 sections in this order:
 
-| Section | Purpose | Must Answer |
-|---------|---------|-------------|
-| **Project Structure Guide** | Directory layout, key files, architecture guidelines | "Where is everything and how is it organized?" |
-| **Domain Language** | Project-specific terminology agents cannot infer from code | "What do these words mean in this project?" |
-| **Policies & Mandatory Rules** | Hard rules that constrain agent behavior | "What must the agent always / never do?" |
-| **Operation Guide** | Dev environment, workflows, test commands, tooling | "How do I run, test, and build this project?" |
+| Section                        | Purpose                                                    | Must Answer                                    |
+| ------------------------------ | ---------------------------------------------------------- | ---------------------------------------------- |
+| **Project Structure Guide**    | Directory layout, key files, architecture guidelines       | "Where is everything and how is it organized?" |
+| **Domain Language**            | Project-specific terminology agents cannot infer from code | "What do these words mean in this project?"    |
+| **Policies & Mandatory Rules** | Hard rules that constrain agent behavior                   | "What must the agent always / never do?"       |
+| **Operation Guide**            | Dev environment, workflows, test commands, tooling         | "How do I run, test, and build this project?"  |
 
 If a root section has no content yet, keep the H2 heading and add a placeholder — never omit a section. Any root subsections must start at H3.
 
@@ -78,9 +78,11 @@ For `Project Structure Guide` → `Repo Structure & Important Files`, use a plai
 
 ```text
 .
-├── AGENTS.md                   # Root — 全局规则 + 索引子 AGENTS.md
+├── README.md                   # Project introduction and selling points
+├── AGENTS.md                   # Root — Global rules + index of sub-AGENTS.md
 ├── tests/                      # Automated tests
 ├── docs/                       # Project documentation
+│   ├── research/               # Research documents written by agents
 │   └── adr/                    # Architecture Decision Records (MADR format) — current decisions
 │       ├── 0001-use-jwt-for-sessions.md
 │       ├── 0002-add-rate-limiting.md
@@ -88,12 +90,13 @@ For `Project Structure Guide` → `Repo Structure & Important Files`, use a plai
 │           └── 0000-use-sessions-in-redis.md
 ├── packages/                   # Multi-root sub-projects
 │   ├── frontend/
-│   │   └── AGENTS.md           # Sub — 前端专属规则
+│   │   └── AGENTS.md           # Sub — Frontend-specific rules
 │   └── backend/
-│       └── AGENTS.md           # Sub — 后端专属规则
-├── examples/                   # 独立示例项目
+│       └── AGENTS.md           # Sub — Backend-specific rules
+├── examples/                   # Independent example projects
 │   └── chat-demo/
-│       └── AGENTS.md           # Sub — 示例项目规则
+│       └── AGENTS.md           # Sub — Example project rules
+├── .scratch/                   # Ignored directory for agent experiments
 └── package.json                # Scripts and dependencies
 ```
 
@@ -108,40 +111,35 @@ Every project has terms whose meanings differ from common usage — an agent mis
 
 ## Recommended Policies
 
-The following subsections are recommended additions under `Policies & Mandatory Rules` in the root `AGENTS.md`. Add one to a nested `AGENTS.md` only when the subtree introduces or overrides that policy. Full templates and examples are in `references/agents-md-template.md`.
+The following subsections are recommended additions under `Policies & Mandatory Rules` in the root `AGENTS.md`.
+Add one to a nested `AGENTS.md` only when the subtree introduces or overrides that policy.
+Full templates and examples are in `references/agents-md-template.md`.
 
-### Compatibility Policy
-
-When project stability expectations affect implementation choices, add a `Compatibility Policy` subsection under `Policies & Mandatory Rules`.
-
-For example, a self-use or 0.x project might state: zero stability guarantees, prefer direct migrations over compatibility layers.
-
-### Documentation Intent Principle
-
-Documents record intent, code implements it. Add a `Documentation Intent Principle` subsection under `Policies & Mandatory Rules`.
-
-### Check Tiers
-
-When the project's checks differ sharply in cost or environment requirements (e.g. screenshot tests that need tmux + Chrome), add a `Check Tiers` subsection under `Policies & Mandatory Rules`. It fixes the classification rule for where a new check belongs and which tier to run when verifying changes locally.
+| Policy               | Purpose                                                           | Recommended for                 |
+| -------------------- | ----------------------------------------------------------------- | ------------------------------- |
+| Compatibility Policy | Relaxed stability guarantees, no compatibility layers             | Self-use or 0.x projects        |
+| CI-Gated Checks      | Run broad, expensive checks on PR/tag CI                          | Most projects (should have CI)  |
+| Agent Author         | Attribute agent-written research docs to the agent, not the owner | Projects with research docs     |
 
 ## README vs AGENTS Boundary
 
-| Audience | README.md | AGENTS.md |
-|----------|-----------|-----------|
-| What the project is and does | ✅ | — |
-| Installation and usage | ✅ | — |
-| Feature list, roadmap | ✅ | — |
-| Domain terminology (project-specific) | — | ✅ |
-| Directory structure, key files | — | ✅ |
-| Build / test / format commands | — | ✅ |
-| Architecture guidelines | — | ✅ |
-| Mandatory rules | — | ✅ |
+| Audience                              | README.md | AGENTS.md |
+| ------------------------------------- | --------- | --------- |
+| What the project is and does          | ✅        | —         |
+| Installation and usage                | ✅        | —         |
+| Feature list, roadmap                 | ✅        | —         |
+| Domain terminology (project-specific) | —         | ✅        |
+| Directory structure, key files        | —         | ✅        |
+| Build / test / format commands        | —         | ✅        |
+| Architecture guidelines               | —         | ✅        |
+| Mandatory rules                       | —         | ✅        |
 
 If content serves **developer agents modifying the project**, put it in AGENTS.md. Never duplicate between README and AGENTS.
 
 ## When to Update
 
 Update AGENTS.md when:
+
 - New mandatory rules are established
 - New domain terms are defined or existing ones change meaning
 - Directory restructuring occurs

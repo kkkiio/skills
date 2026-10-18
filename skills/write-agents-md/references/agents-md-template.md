@@ -6,9 +6,7 @@ Brief one-liner describing what this project is and what this guide covers.
 
 ## Project Structure Guide
 
-### Overview
-
-<1-2 sentences about the project.>
+<1 sentence about the project structure.>
 
 ### Repo Structure & Important Files
 
@@ -55,22 +53,19 @@ When changing public APIs, persisted data, config files, CLI flags, plugin contr
 - Prefer direct migrations and simple current-state code over compatibility layers.
 - Document intentional breaking changes in the final response; update `CHANGELOG.md` when it exists or when the project already uses release notes.
 
-### Documentation Intent Principle
+### Agent Author
 
-Documents record intent, code implements it. Intent is the source of truth.
+When the agent writes research docs under `docs/research/`, sign them with the agent's name, not the owner's.
 
-- Write documents before changing code when intent changes. Name files by intent, not topic.
-- Treat documents as living — record current intent, never intermediate states. Update when intent shifts; move obsolete docs to `docs/adr/superseded/`.
-
-### Check Tiers
+### CI-Gated Checks
 
 Checks are tiered by cost and environment requirements.
 
 - **Fast tier** — lint, typecheck, unit tests. Deterministic, seconds to run, no special dependencies. Must stay runnable locally with one command.
-- **CI tier** — e2e, visual (e.g. screenshot tests needing tmux + Chrome), performance, multi-environment. Keep out of the default local suite; run in CI.
+- **PR CI tier** — e2e, visual (e.g. screenshot tests needing tmux + Chrome), performance, multi-environment. Run on PRs.
+- **Tag CI tier** — image and artifact builds, deployment previews, massive regression tests. Run on tags.
 
-- Put a new check in the fast tier unless it genuinely needs CI-only dependencies.
-- When verifying changes, run the fast tier. Do not try to reproduce CI-tier checks locally.
+When verifying changes, run the fast tier.
 
 ### <Project-Specific Rule>
 
@@ -84,24 +79,12 @@ Checks are tiered by cost and environment requirements.
 
 ### Development Workflow
 
-1. <Step 1>:
-   ```bash
-   <command>
-   ```
-2. <Step 2>:
-   ```bash
-   <command>
-   ```
-3. <Step 3>
-
-### Testing & Automated Checks
-
-<When to run which checks.>
-
-#### <Test category>
-
 ```bash
-<command>
+# Example dev loop
+just check
+just fmt
+just test
+just build
 ```
 
 ### Utilities & Tips
