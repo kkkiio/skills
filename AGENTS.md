@@ -41,7 +41,7 @@ prompts/
 ├── huh.md
 ├── implement-with-notes.md
 ├── restate-intent.md
-└── tldr.md
+└── teach-me.md
 ```
 
 - `skills/` — all skills. Each subdirectory is one installable skill.
