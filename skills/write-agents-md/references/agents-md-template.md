@@ -45,28 +45,6 @@ Keep entries minimal: no relationships, no history, no implementation details. U
 
 ## Policies & Mandatory Rules
 
-### Compatibility Policy
-
-When changing public APIs, persisted data, config files, CLI flags, plugin contracts, or user-facing workflows, follow this project's compatibility policy.
-
-- Project at 0.x: zero stability guarantees.
-- Prefer direct migrations and simple current-state code over compatibility layers.
-- Document intentional breaking changes in the final response; update `CHANGELOG.md` when it exists or when the project already uses release notes.
-
-### Agent Author
-
-When the agent writes research docs under `docs/research/`, sign them with the agent's name, not the owner's.
-
-### CI-Gated Checks
-
-Checks are tiered by cost and environment requirements.
-
-- **Fast tier** — lint, typecheck, unit tests. Deterministic, seconds to run, no special dependencies. Must stay runnable locally with one command.
-- **PR CI tier** — e2e, visual (e.g. screenshot tests needing tmux + Chrome), performance, multi-environment. Run on PRs.
-- **Tag CI tier** — image and artifact builds, deployment previews, massive regression tests. Run on tags.
-
-When verifying changes, run the fast tier.
-
 ### <Project-Specific Rule>
 
 <Rule statement. Use imperative mood.>

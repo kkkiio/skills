@@ -6,7 +6,7 @@ Agent guide for the `kkkiio/skills` collection — reusable skills for coding ag
 
 ### Skill Scope
 
-- **Universal skills** (`write-agents-md`, `write-readme-md`) work in any project with any coding agent.
+- **Universal skills** (`new-issue`, `set-policy`, `write-agents-md`, `write-readme-md`) work in any project with any coding agent.
 - **Tech-stack skills** (`write-snapshot-test` — MoonBit only) are generic baselines meant to be adapted into a concrete project (e.g. via `prompts/adopt-guidance.md`). Keep them project-agnostic: state rules generically and put project-specific values (commands, paths, fixture names, custom primitives) in examples marked `例：`.
 
 ### Skill File Naming
@@ -25,6 +25,17 @@ This repository is a collection of skills and prompts for use with `agconf fetch
 
 ```text
 skills/
+├── new-issue/
+│   ├── SKILL.md
+│   └── references/
+│       ├── bug.md
+│       └── enhancement.md
+├── set-policy/
+│   ├── SKILL.md
+│   └── references/
+│       ├── black-box-test.md
+│       ├── no-comments.md
+│       └── no-compat.md
 ├── write-agents-md/
 │   ├── SKILL.md
 │   └── references/
@@ -64,7 +75,6 @@ Every `SKILL.md` has:
 
 - **Skill** — A self-contained `skills/<skill-name>/` directory whose `SKILL.md` teaches a coding agent reusable knowledge or behavior.
 - **Prompt** — A standalone Markdown instruction under `prompts/` that is installed for an explicitly selected agent runtime.
-- **Recommended policy** — An optional predefined subsection (e.g. Compatibility Policy, Check Tiers) that the write-agents-md skill may add to an AGENTS.md's `Policies & Mandatory Rules`; templates live in `skills/write-agents-md/references/`.
 
 ## Operation Guide
 

@@ -109,18 +109,6 @@ Every project has terms whose meanings differ from common usage — an agent mis
 - No relationships, history, implementation details, or maintenance rules.
 - Keep under 20 lines — each line costs tokens in every session.
 
-## Recommended Policies
-
-The following subsections are recommended additions under `Policies & Mandatory Rules` in the root `AGENTS.md`.
-Add one to a nested `AGENTS.md` only when the subtree introduces or overrides that policy.
-Full templates and examples are in `references/agents-md-template.md`.
-
-| Policy               | Purpose                                                           | Recommended for                 |
-| -------------------- | ----------------------------------------------------------------- | ------------------------------- |
-| Compatibility Policy | Relaxed stability guarantees, no compatibility layers             | Self-use or 0.x projects        |
-| CI-Gated Checks      | Run broad, expensive checks on PR/tag CI                          | Most projects (should have CI)  |
-| Agent Author         | Attribute agent-written research docs to the agent, not the owner | Projects with research docs     |
-
 ## README vs AGENTS Boundary
 
 | Audience                              | README.md | AGENTS.md |
