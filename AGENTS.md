@@ -6,7 +6,7 @@ Agent guide for the `kkkiio/skills` collection — reusable skills for coding ag
 
 ### Skill Scope
 
-- **Universal skills** (`new-issue`, `set-policy`, `setup-draft-release`, `setup-pr-review`, `write-agents-md`, `write-readme-md`) work in any project with any coding agent.
+- **Universal skills** (`new-issue`, `set-policy`, `setup-speculative-flow`, `write-agents-md`, `write-readme-md`) work in any project with any coding agent.
 - **Tech-stack skills** (`write-snapshot-test` — MoonBit only) are generic baselines meant to be adapted into a concrete project (e.g. via `prompts/adopt-guidance.md`). Keep them project-agnostic: state rules generically and put project-specific values (commands, paths, fixture names, custom primitives) in examples marked `例：`.
 
 ### Skill File Naming
@@ -36,12 +36,12 @@ skills/
 │       ├── black-box-test.md
 │       ├── no-comments.md
 │       └── no-compat.md
-├── setup-draft-release/
+├── setup-speculative-flow/
 │   ├── SKILL.md
 │   └── references/
-│       └── mooncakes-example.md
-├── setup-pr-review/
-│   └── SKILL.md
+│       ├── draft-release.md
+│       ├── mooncakes-example.md
+│       └── pr-review.md
 ├── write-agents-md/
 │   ├── SKILL.md
 │   └── references/
