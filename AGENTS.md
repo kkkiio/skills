@@ -41,6 +41,7 @@ skills/
 │   └── references/
 │       ├── draft-release.md
 │       ├── mooncakes-example.md
+│       ├── pr-report-example.md
 │       └── pr-review.md
 ├── write-agents-md/
 │   ├── SKILL.md
